@@ -1,9 +1,9 @@
-import './App.css';
+import { Outlet } from 'react-router';
 
 const App = () => {
   return (
     <div>
-      <h1>Vite + React</h1>
+      <Outlet />
     </div>
   );
 };
