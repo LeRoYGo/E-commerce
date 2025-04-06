@@ -27,7 +27,9 @@ export default tseslint.config(
     ignores: ['dist', 'node_modules', 'coverage', 'eslint.config.js'],
   },
   js.configs.recommended,
-  ...tseslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.strictTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
   {
     languageOptions: {
       globals: {
