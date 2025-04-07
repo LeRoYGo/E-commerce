@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.logoWrapper {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  padding: 10px 0;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  span {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  column-gap: 45px;
+  height: 100%;
+  li a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+    height: 100%;
+    &.active {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -10%;
+        display: block;
+        height: 2px;
+        width: 120%;
+        background-color: rgba(81, 133, 129);
+      }
+    }
+  }
+}
