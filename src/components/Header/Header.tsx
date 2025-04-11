@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className={style.header}>
       <Link to="/" className={style.logoWrapper}>
-        <img src="../../../public/logo.svg" alt="Lalasia logo" />
+        <img src="/logo.svg" alt="Lalasia logo" />
         <span>Lalasia</span>
       </Link>
       <nav className={style.nav}>

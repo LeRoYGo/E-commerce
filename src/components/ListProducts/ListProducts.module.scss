@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 22px;
+  max-width: 1240px;
+  margin: 0 auto;
+  .text {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  .list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  .listItems {
+    flex-basis: 32%;
+  }
+}
