@@ -1,5 +1,5 @@
 import style from './ProductCard.module.scss';
-import Button from '../Button';
+import Button from '../../../Button';
 
 type ProductCardProps = {
   id: string | number;

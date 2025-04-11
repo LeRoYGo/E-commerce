@@ -1,5 +1,5 @@
 import style from './ListProducts.module.scss';
-import ProductCard from '../ProductCard';
+import ProductCard from './components/ProductCard';
 
 const listProduct = [
   {
@@ -63,7 +63,9 @@ const listProduct = [
 const ListProducts = () => {
   return (
     <div className={style.wrapper}>
-      <span className={style.text}>Total products</span>
+      <span className={style.text} data-count={listProduct.length}>
+        Total products
+      </span>
       <ul className={style.list}>
         {listProduct.map((product) => (
           <li key={product.id} className={style.listItems}>

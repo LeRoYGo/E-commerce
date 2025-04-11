@@ -1,20 +1,40 @@
-$width: 1240px;
+$width: 1200px;
+$gap: 24px;
 
 .wrapper {
   max-width: $width;
-  // margin: 0 auto;
+
   .text {
     font-size: 32px;
     font-weight: bold;
+    position: relative;
+    line-height: 36px;
+    &::after {
+      content: attr(data-count);
+      display: block;
+      position: absolute;
+      right: -24px;
+      top: 0;
+      transform: translate(100%, 0);
+      color: rgba(81, 133, 129);
+
+      font-size: 20px;
+    }
   }
+
   .list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: $gap;
     .listItems {
-      flex: 1 1 250px;
-      max-width: calc(($width / 3) - 24px);
+      width: calc(34% - $gap);
     }
+  }
+}
+
+@media (max-width: 650px) {
+  .wrapper .list .listItems {
+    width: calc(51.7% - $gap);
   }
 }
