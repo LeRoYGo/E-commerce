@@ -1,9 +1,8 @@
+$width: 1240px;
+
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  row-gap: 22px;
-  max-width: 1240px;
-  margin: 0 auto;
+  max-width: $width;
+  // margin: 0 auto;
   .text {
     font-size: 32px;
     font-weight: bold;
@@ -12,10 +11,10 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-  }
-  .listItems {
-    flex-basis: 32%;
+    gap: 24px;
+    .listItems {
+      flex: 1 1 250px;
+      max-width: calc(($width / 3) - 24px);
+    }
   }
 }

@@ -34,6 +34,30 @@ const listProduct = [
     price: 312,
     category: 'Chair',
   },
+  {
+    id: 5,
+    img: 'https://i.ibb.co/8gMt7chT/Rectangle-23.jpg',
+    name: 'White Aesthetic Chair',
+    description: 'erffeff',
+    price: 312,
+    category: 'Chair',
+  },
+  {
+    id: 6,
+    img: 'https://i.ibb.co/8gMt7chT/Rectangle-23.jpg',
+    name: 'White Aesthetic Chair',
+    description: 'erffeff',
+    price: 312,
+    category: 'Chair',
+  },
+  {
+    id: 7,
+    img: 'https://i.ibb.co/8gMt7chT/Rectangle-23.jpg',
+    name: 'White Aesthetic Chair',
+    description: 'erffeff',
+    price: 312,
+    category: 'Chair',
+  },
 ];
 
 const ListProducts = () => {
