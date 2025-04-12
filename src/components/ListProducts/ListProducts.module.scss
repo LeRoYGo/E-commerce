@@ -2,8 +2,6 @@ $width: 1200px;
 $gap: 24px;
 
 .wrapper {
-  max-width: $width;
-
   .text {
     display: inline-block;
     font-size: 32px;
@@ -30,7 +28,7 @@ $gap: 24px;
     flex-wrap: wrap;
     gap: $gap;
     .listItems {
-      width: calc(34% - $gap);
+      width: calc(33% - ($gap / 2));
     }
   }
 }
