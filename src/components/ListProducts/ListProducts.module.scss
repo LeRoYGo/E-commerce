@@ -5,10 +5,12 @@ $gap: 24px;
   max-width: $width;
 
   .text {
+    display: inline-block;
     font-size: 32px;
     font-weight: bold;
     position: relative;
     line-height: 36px;
+    margin-bottom: 30px;
     &::after {
       content: attr(data-count);
       display: block;
