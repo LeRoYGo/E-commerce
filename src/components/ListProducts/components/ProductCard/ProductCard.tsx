@@ -23,7 +23,7 @@ const ProductCard = (props: ProductCardProps) => {
           <p>{description}</p>
         </div>
         <div className={style.box}>
-          <span>{`$${price}`}</span>
+          <span>{'$' + price}</span>
           <Button text="Add to Cart" />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import style from './ProductsItemPages.module.scss';
+import style from './ProductItemPages.module.scss';
 import ListProducts from '../../components/ListProducts';
 import Gallery from './components/Gallery';
 const pic = [
@@ -7,15 +7,18 @@ const pic = [
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrOksZKF2cQgmiFlVp__WB2sRwtnsQLqfhJQ&s',
 ];
 
-const ProductsItemPages = () => {
+const ProductItemPages = () => {
   return (
     <main className={style.main}>
       <div className={style.content}>
         <Gallery pictures={pic} />
+        <div>
+          <h1>{}</h1>
+        </div>
       </div>
       <ListProducts title="Related Items" isShowCount={false} />
     </main>
   );
 };
 
-export default ProductsItemPages;
+export default ProductItemPages;
