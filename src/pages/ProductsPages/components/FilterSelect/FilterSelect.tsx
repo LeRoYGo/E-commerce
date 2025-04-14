@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import style from './FilterSelect.module.scss';
-import Select, { MultiValue } from 'react-select';
+import Select, { MultiValue, StylesConfig } from 'react-select';
 
 type Category = {
   value: string;
@@ -13,18 +13,19 @@ const options: Category[] = [
   { value: 'cherry', label: 'Cherry' },
 ];
 
+const colourStyles: StylesConfig<Category> = {
+  control: (styles) => ({ ...styles, border: 'none' }),
+  placeholder: (styles) => ({ ...styles, color: 'rgba(175, 173, 181, 1)' }),
+};
+
 const FilterSelect = () => {
   const [selectedOptions, setSelectedOptions] = useState<MultiValue<Category>>(
     [],
   );
 
   const handleChange = (selected: MultiValue<Category>) => {
-    // console.log('Выбранные значения:', selected);
     setSelectedOptions(selected);
   };
-  useEffect(() => {
-    console.log(selectedOptions);
-  }, [selectedOptions]);
 
   return (
     <Select
@@ -33,7 +34,7 @@ const FilterSelect = () => {
       closeMenuOnSelect={false}
       options={options}
       className={style.basicMultiSelect}
-      classNamePrefix="select"
+      styles={colourStyles}
       placeholder="Filter"
       onChange={handleChange}
     />

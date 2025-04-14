@@ -1,5 +1,6 @@
 import style from './ProductCard.module.scss';
 import Button from '../../../Button';
+import { Link } from 'react-router';
 
 type ProductCardProps = {
   id: string | number;
@@ -11,9 +12,9 @@ type ProductCardProps = {
 };
 
 const ProductCard = (props: ProductCardProps) => {
-  const { img, name, description, category, price } = props;
+  const { id, img, name, description, category, price } = props;
   return (
-    <article className={style.card}>
+    <Link to={'/products/' + id} className={style.card}>
       <img src={img} alt={name} />
       <div className={style.wrapper}>
         <div className={style.blockText}>
@@ -26,7 +27,7 @@ const ProductCard = (props: ProductCardProps) => {
           <Button text="Add to Cart" />
         </div>
       </div>
-    </article>
+    </Link>
   );
 };
 export default ProductCard;

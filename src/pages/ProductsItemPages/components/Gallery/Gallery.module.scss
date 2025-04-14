@@ -1,0 +1,45 @@
+.wrapper {
+  align-self: flex-start;
+  width: 600px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.listImg {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  background-color: rgba(175, 173, 181, 0.2);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  &:hover {
+    background-color: rgba(0, 0, 0);
+  }
+  &::before {
+    content: "ᐸ";
+    display: block;
+    transform: scale(3);
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+.arrowNext {
+  left: auto;
+  right: 10px;
+  &::before {
+    content: "ᐳ";
+  }
+}

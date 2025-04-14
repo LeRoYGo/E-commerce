@@ -1,0 +1,18 @@
+.inputBox {
+  width: 100%;
+  display: flex;
+  column-gap: 24px;
+}
+.input {
+  padding: 15px 12px;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  &:focus {
+    outline: 1px solid #2684ff;
+  }
+  &::placeholder {
+    color: rgba(175, 173, 181, 1);
+  }
+}

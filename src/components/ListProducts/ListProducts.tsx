@@ -1,6 +1,11 @@
 import style from './ListProducts.module.scss';
 import ProductCard from './components/ProductCard';
 
+type ListProductsProps = {
+  title: string;
+  isShowCount?: boolean;
+};
+
 const listProduct = [
   {
     id: 1,
@@ -60,11 +65,14 @@ const listProduct = [
   },
 ];
 
-const ListProducts = () => {
+const ListProducts = ({ title, isShowCount = true }: ListProductsProps) => {
   return (
     <div className={style.wrapper}>
-      <span className={style.text} data-count={listProduct.length}>
-        Total products
+      <span
+        className={style.text}
+        data-count={isShowCount ? listProduct.length : ''}
+      >
+        {title}
       </span>
       <ul className={style.list}>
         {listProduct.map((product) => (
