@@ -19,9 +19,7 @@ const colourStyles: StylesConfig<Category> = {
 };
 
 const FilterSelect = () => {
-  const [selectedOptions, setSelectedOptions] = useState<MultiValue<Category>>(
-    [],
-  );
+  const [, setSelectedOptions] = useState<MultiValue<Category>>([]);
 
   const handleChange = (selected: MultiValue<Category>) => {
     setSelectedOptions(selected);
