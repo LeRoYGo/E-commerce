@@ -1,11 +1,9 @@
-import { createBrowserRouter } from 'react-router';
-
 import App from '../App';
 import ProductsPages from '../pages/ProductsPages';
 import ProductItemPages from '../pages/ProductItemPages';
 import Root from '../components/Root';
 
-export const router = createBrowserRouter([
+export const router = [
   {
     path: '/',
     Component: Root,
@@ -18,4 +16,4 @@ export const router = createBrowserRouter([
       { path: ':productId', Component: ProductItemPages },
     ],
   },
-]);
+];
