@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import style from './Gallery.module.scss';
+import arrow from '../../../../assets/Arrow.svg';
 
 type GalleryProps = {
   pictures: string[];
@@ -47,11 +48,15 @@ const Gallery = ({ pictures }: GalleryProps) => {
           <img key={i} src={img} alt={`img ${i}`} />
         ))}
       </div>
-      <button onClick={handlePrevClick} className={style.arrow} />
+      <button onClick={handlePrevClick} className={style.arrow}>
+        {arrow}
+      </button>
       <button
         onClick={handleNextClick}
         className={`${style.arrow} ${style.arrowNext}`}
-      />
+      >
+        {arrow}
+      </button>
     </div>
   );
 };

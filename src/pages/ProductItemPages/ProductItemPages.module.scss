@@ -8,6 +8,34 @@
   max-width: 1240px;
   margin: 0 auto;
 }
+.wrapper {
+  display: flex;
+  column-gap: 48px;
+  margin-bottom: 48px;
+  .wrapperGallery {
+    max-width: 600px;
+  }
+}
 .content {
-  // height: 600px;
+  .nameProduct {
+    color: rgba(0, 0, 0);
+    font-weight: 700;
+    font-size: 44px;
+    margin: 0;
+    margin-bottom: 24px;
+  }
+  .descriptionProduct {
+    color: rgba(175, 173, 181);
+    margin-bottom: 80px;
+  }
+  .priceProduct {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 44px;
+    margin-bottom: 48px;
+  }
+  .btnBox {
+    display: flex;
+    column-gap: 48px;
+  }
 }

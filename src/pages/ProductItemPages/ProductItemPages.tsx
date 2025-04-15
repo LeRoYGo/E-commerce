@@ -1,6 +1,7 @@
 import style from './ProductItemPages.module.scss';
 import ListProducts from '../../components/ListProducts';
 import Gallery from './components/Gallery';
+import Button from '../../components/Button';
 const pic = [
   'https://cdn.pixabay.com/photo/2017/10/03/07/01/sky-2811461_640.jpg',
   'https://russkiiyazyk.ru/wp-content/uploads/2018/06/Kartinka.jpg',
@@ -10,10 +11,29 @@ const pic = [
 const ProductItemPages = () => {
   return (
     <main className={style.main}>
-      <div className={style.content}>
-        <Gallery pictures={pic} />
-        <div>
-          <h1>{}</h1>
+      <span />
+      <div className={style.wrapper}>
+        <div className={style.wrapperGallery}>
+          <Gallery pictures={pic} />
+        </div>
+        <div className={style.content}>
+          <h1 className={style.nameProduct}>White Aesthetic Chair</h1>
+          <p className={style.descriptionProduct}>
+            Ergonomic executive chair upholstered in bonded black leather and
+            PVC padded seat and back for all-day comfort and support
+          </p>
+          <span className={style.priceProduct}>$99.98</span>
+          <div className={style.btnBox}>
+            <Button text="Buy Now" />
+            <Button
+              text="Add to Cart"
+              style={{
+                color: 'rgba(0, 0, 0)',
+                backgroundColor: 'rgb(255, 255, 255)',
+                border: '1px solid rgba(0, 0, 0)',
+              }}
+            />
+          </div>
         </div>
       </div>
       <ListProducts title="Related Items" isShowCount={false} />
