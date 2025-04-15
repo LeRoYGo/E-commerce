@@ -1,13 +1,7 @@
-import { Link } from 'react-router';
-import Header from './Header';
+import { Navigate } from 'react-router';
 
 const Root = () => {
-  return (
-    <>
-      <Header />
-      <Link to="/products">Перейти в каталог</Link>
-    </>
-  );
+  return <Navigate to="/products" replace />;
 };
 
 export default Root;
