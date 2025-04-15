@@ -35,4 +35,9 @@
 .arrowNext {
   left: auto;
   right: 10px;
+  transform: rotate(180deg);
+}
+
+.svgArrow {
+  fill: #ffff;
 }

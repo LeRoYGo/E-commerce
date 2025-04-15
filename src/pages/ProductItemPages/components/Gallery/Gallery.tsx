@@ -49,13 +49,13 @@ const Gallery = ({ pictures }: GalleryProps) => {
         ))}
       </div>
       <button onClick={handlePrevClick} className={style.arrow}>
-        {arrow}
+        <img src={arrow} />
       </button>
       <button
         onClick={handleNextClick}
         className={`${style.arrow} ${style.arrowNext}`}
       >
-        {arrow}
+        <img src={arrow} />
       </button>
     </div>
   );

@@ -2,6 +2,8 @@ import style from './ProductItemPages.module.scss';
 import ListProducts from '../../components/ListProducts';
 import Gallery from './components/Gallery';
 import Button from '../../components/Button';
+import arrow from '../../assets/Arrow.svg';
+import { useNavigate } from 'react-router';
 const pic = [
   'https://cdn.pixabay.com/photo/2017/10/03/07/01/sky-2811461_640.jpg',
   'https://russkiiyazyk.ru/wp-content/uploads/2018/06/Kartinka.jpg',
@@ -9,9 +11,13 @@ const pic = [
 ];
 
 const ProductItemPages = () => {
+  const navigate = useNavigate();
   return (
     <main className={style.main}>
-      <span />
+      <button onClick={() => navigate(-1)} className={style.wrappBack}>
+        <img src={arrow} alt="" />
+        <span>Back</span>
+      </button>
       <div className={style.wrapper}>
         <div className={style.wrapperGallery}>
           <Gallery pictures={pic} />
