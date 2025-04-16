@@ -1,4 +1,4 @@
-import style from './ListProducts.module.scss';
+import style from './ProductCatalog.module.scss';
 import ProductCard from './components/ProductCard';
 
 type ListProductsProps = {

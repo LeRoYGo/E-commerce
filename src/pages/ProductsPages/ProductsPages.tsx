@@ -1,5 +1,5 @@
 import style from './ProductsPages.module.scss';
-import ListProducts from '../../components/ListProducts';
+import ListProducts from '../../components/ProductCatalog';
 import FilterSelect from './components/FilterSelect';
 import SearchInput from './components/SearchInput';
 

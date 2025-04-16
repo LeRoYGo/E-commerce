@@ -1,5 +1,5 @@
 import style from './ProductItemPages.module.scss';
-import ListProducts from '../../components/ListProducts';
+import ListProducts from '../../components/ProductCatalog';
 import Gallery from './components/Gallery';
 import Button from '../../components/Button';
 import arrow from '../../assets/Arrow.svg';
