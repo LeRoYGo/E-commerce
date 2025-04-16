@@ -7,8 +7,8 @@ const SearchInput = () => {
       <input
         className={style.input}
         id="search"
+        type="search"
         placeholder="Search product"
-        type="text"
       />
       <Button text="Find now" style={{ whiteSpace: 'nowrap' }} />
     </div>
