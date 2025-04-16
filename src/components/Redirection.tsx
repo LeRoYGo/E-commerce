@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router';
 
-const Root = () => {
+const Redirection = () => {
   return <Navigate to="/products" replace />;
 };
 
-export default Root;
+export default Redirection;

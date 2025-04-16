@@ -4,6 +4,7 @@ import Gallery from './components/Gallery';
 import Button from '../../components/Button';
 import arrow from '../../assets/Arrow.svg';
 import { useNavigate } from 'react-router';
+
 const pic = [
   'https://cdn.pixabay.com/photo/2017/10/03/07/01/sky-2811461_640.jpg',
   'https://russkiiyazyk.ru/wp-content/uploads/2018/06/Kartinka.jpg',

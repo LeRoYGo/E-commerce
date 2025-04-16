@@ -1,12 +1,12 @@
 import App from '../App';
 import ProductsPages from '../pages/ProductsPages';
 import ProductItemPages from '../pages/ProductItemPages';
-import Root from '../components/Root';
+import Redirection from '../components/Redirection';
 
 export const router = [
   {
     path: '/',
-    Component: Root,
+    Component: Redirection,
   },
   {
     path: '/products',

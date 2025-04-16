@@ -8,13 +8,13 @@
 
 .logoWrapper {
   display: flex;
-  column-gap: 10px;
+  column-gap: 0.625rem;
   align-items: center;
-  padding: 10px 0;
+  padding: 0.625rem 0;
   text-decoration: none;
-  color: rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0);
   span {
-    font-size: 20px;
+    font-size: 1.3rem;
     font-weight: bold;
   }
 }
@@ -22,7 +22,7 @@
 .nav ul {
   list-style: none;
   display: flex;
-  column-gap: 45px;
+  column-gap: 3rem;
   height: 100%;
   li a {
     display: inline-flex;

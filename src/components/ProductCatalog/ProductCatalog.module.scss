@@ -1,26 +1,23 @@
 $width: 1200px;
-$gap: 24px;
+$gap: 1.5rem;
 
-.wrapper {
-  width: 100%;
-}
 .text {
   display: inline-block;
-  font-size: 32px;
+  font-size: 2em;
   font-weight: bold;
   position: relative;
   line-height: 36px;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
   &::after {
     content: attr(data-count);
     display: block;
     position: absolute;
-    right: -24px;
+    right: -0.8em;
     top: 0;
-    transform: translate(100%, 0);
+    transform: translateX(100%);
     color: rgba(81, 133, 129);
 
-    font-size: 20px;
+    font-size: 0.65em;
   }
 }
 
@@ -31,8 +28,8 @@ $gap: 24px;
   gap: $gap;
 }
 
-// @media (max-width: 650px) {
-//   .wrapper .list .listItems {
-//     width: calc(51.7% - $gap);
-//   }
-// }
+@media (max-width: 550px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

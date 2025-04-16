@@ -4,10 +4,9 @@
   cursor: pointer;
   border-radius: 5px;
   color: rgba(255, 255, 255);
-  padding: 15px 30px;
+  padding: 0.9375rem 1.875rem;
   background-color: rgba(81, 133, 129);
-  line-height: 18px;
-  font-size: 18px;
+  font-size: 1em;
   transition: background-color 0.5s;
   &:hover {
     background-color: rgba(134, 170, 167);
