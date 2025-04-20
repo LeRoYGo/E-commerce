@@ -1,0 +1,21 @@
+.btnBack {
+  align-self: flex-start;
+  margin-bottom: 2rem;
+  background-color: transparent;
+  font-size: 1.5rem;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  &:hover {
+    text-decoration: underline;
+  }
+  &::before {
+    content: url("/src/assets/Arrow.svg");
+    position: absolute;
+    top: 55%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}

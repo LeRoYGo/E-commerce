@@ -1,41 +1,38 @@
-import { useState } from 'react';
 import style from './FilterSelect.module.scss';
-import Select, { MultiValue, StylesConfig } from 'react-select';
-
-type Category = {
-  value: string;
-  label: string;
-};
-
-const options: Category[] = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'banana', label: 'Banana' },
-  { value: 'cherry', label: 'Cherry' },
-];
-
-const colourStyles: StylesConfig<Category> = {
-  control: (styles) => ({ ...styles, border: 'none' }),
-  placeholder: (styles) => ({ ...styles, color: 'rgba(175, 173, 181, 1)' }),
-};
+import { useState } from 'react';
+import Select, { MultiValue } from 'react-select';
+import { FilterTypes } from '../../../../types';
+import { useGetCategoriesQuery } from '../../../../store/api';
 
 const FilterSelect = () => {
-  const [, setSelectedOptions] = useState<MultiValue<Category>>([]);
+  const [, setSelectedOptions] = useState<MultiValue<FilterTypes>>([]);
+  const { data } = useGetCategoriesQuery('Categories');
 
-  const handleChange = (selected: MultiValue<Category>) => {
+  const handleChange = (selected: MultiValue<FilterTypes>) => {
     setSelectedOptions(selected);
   };
 
-  return (
-    <Select
-      isMulti
-      name="categories"
-      closeMenuOnSelect={false}
-      options={options}
-      className={style.basicMultiSelect}
-      styles={colourStyles}
-      placeholder="Filter"
-      onChange={handleChange}
-    />
-  );
+  if (typeof data !== 'undefined') {
+    const filterArr = (): FilterTypes[] => {
+      return data.map((obj) => {
+        return {
+          label: obj.name,
+          value: obj.slug,
+        };
+      });
+    };
+
+    return (
+      <Select
+        isMulti
+        name="categories"
+        options={filterArr()}
+        closeMenuOnSelect={false}
+        className={style.basicMultiSelect}
+        placeholder="Filter"
+        onChange={handleChange}
+      />
+    );
+  }
 };
 export default FilterSelect;

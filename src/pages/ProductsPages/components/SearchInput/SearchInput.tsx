@@ -10,7 +10,7 @@ const SearchInput = () => {
         type="search"
         placeholder="Search product"
       />
-      <Button text="Find now" style={{ whiteSpace: 'nowrap' }} />
+      <Button style={{ whiteSpace: 'nowrap' }}>Find now</Button>
     </div>
   );
 };

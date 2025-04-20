@@ -1,7 +1,7 @@
 import style from './Header.module.scss';
 import { Link, NavLink } from 'react-router';
 
-const listItems = [
+const pages = [
   { id: 0, title: 'Products', path: '/products' },
   { id: 1, title: 'Categories', path: '/categories' },
   { id: 2, title: 'About us', path: '/about-us' },
@@ -14,15 +14,15 @@ const Header = () => {
         <img src="/logo.svg" alt="Lalasia logo" />
         <span>Lalasia</span>
       </Link>
-      <nav className={style.nav}>
-        <ul>
-          {listItems.map((obj) => (
-            <li key={obj.id}>
+      <nav>
+        <ul className={style.navList}>
+          {pages.map((page) => (
+            <li key={page.id}>
               <NavLink
                 className={({ isActive }) => (isActive ? style.active : '')}
-                to={obj.path}
+                to={page.path}
               >
-                {obj.title}
+                {page.title}
               </NavLink>
             </li>
           ))}

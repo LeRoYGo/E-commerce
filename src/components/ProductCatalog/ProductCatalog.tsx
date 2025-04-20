@@ -1,81 +1,26 @@
+import { useGetProductsQuery } from '../../store/api';
 import style from './ProductCatalog.module.scss';
 import ProductCard from './components/ProductCard';
+import { ProductCatalogProps } from '../../types/index.ts';
+import Skeleton from './components/Skeleton/Skeleton.tsx';
 
-type ListProductsProps = {
-  title: string;
-  isShowCount?: boolean;
-};
+const ProductCatalog = ({ title, isShowCount = true }: ProductCatalogProps) => {
+  const { data: listProduct, isLoading } = useGetProductsQuery('Products');
 
-const listProduct = [
-  {
-    id: 1,
-    img: 'https://i.ibb.co/8gMt7chT/Rectangle-23.jpg',
-    name: 'White Aesthetic Chair',
-    description: 'erffeff',
-    price: 312,
-    category: 'Chair',
-  },
-  {
-    id: 2,
-    img: 'https://i.ibb.co/8gMt7chT/Rectangle-23.jpg',
-    name: 'White Aesthetic Chair',
-    description: 'erffeff',
-    price: 312,
-    category: 'Chair',
-  },
-  {
-    id: 3,
-    img: 'https://i.ibb.co/8gMt7chT/Rectangle-23.jpg',
-    name: 'White Aesthetic Chair',
-    description: 'erffeff',
-    price: 312,
-    category: 'Chair',
-  },
-  {
-    id: 4,
-    img: 'https://i.ibb.co/8gMt7chT/Rectangle-23.jpg',
-    name: 'White Aesthetic Chair',
-    description: 'erffeff',
-    price: 312,
-    category: 'Chair',
-  },
-  {
-    id: 5,
-    img: 'https://i.ibb.co/8gMt7chT/Rectangle-23.jpg',
-    name: 'White Aesthetic Chair',
-    description: 'erffeff',
-    price: 312,
-    category: 'Chair',
-  },
-  {
-    id: 6,
-    img: 'https://i.ibb.co/8gMt7chT/Rectangle-23.jpg',
-    name: 'White Aesthetic Chair',
-    description: 'erffeff',
-    price: 312,
-    category: 'Chair',
-  },
-  {
-    id: 7,
-    img: 'https://i.ibb.co/8gMt7chT/Rectangle-23.jpg',
-    name: 'White Aesthetic Chair',
-    description: 'erffeff',
-    price: 312,
-    category: 'Chair',
-  },
-];
+  if (isLoading) {
+    return <Skeleton />;
+  }
 
-const ListProducts = ({ title, isShowCount = true }: ListProductsProps) => {
   return (
     <div className={style.wrapper}>
       <span
         className={style.text}
-        data-count={isShowCount ? listProduct.length : ''}
+        data-count={isShowCount ? listProduct?.length : ''}
       >
         {title}
       </span>
       <ul className={style.list}>
-        {listProduct.map((product) => (
+        {listProduct?.map((product) => (
           <li key={product.id} className={style.listItems}>
             <ProductCard {...product} />
           </li>
@@ -84,4 +29,4 @@ const ListProducts = ({ title, isShowCount = true }: ListProductsProps) => {
     </div>
   );
 };
-export default ListProducts;
+export default ProductCatalog;

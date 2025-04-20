@@ -1,14 +1,13 @@
 import style from './Button.module.scss';
 import { ButtonHTMLAttributes } from 'react';
 
-type ButtonProps = {
-  text: string;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
-
-const Button = ({ text, ...props }: ButtonProps) => {
+const Button = ({
+  children,
+  ...props
+}: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <button className={style.btn} {...props}>
-      {text}
+      {children}
     </button>
   );
 };

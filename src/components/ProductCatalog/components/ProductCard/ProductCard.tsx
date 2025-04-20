@@ -1,30 +1,22 @@
 import style from './ProductCard.module.scss';
 import Button from '../../../Button';
 import { Link } from 'react-router';
-
-type ProductCardProps = {
-  id: string | number;
-  img: string;
-  name: string;
-  description: string;
-  category: string;
-  price: number;
-};
+import { ProductCardProps } from '../../../../types/index.ts';
 
 const ProductCard = (props: ProductCardProps) => {
-  const { id, img, name, description, category, price } = props;
+  const { id, images, title, description, category, price } = props;
   return (
-    <Link to={'/products/' + id} className={style.card}>
-      <img src={img} alt={name} />
+    <Link to={`/products/${id}`} className={style.card}>
+      <img src={images[0]} alt={title} />
       <div className={style.wrapper}>
         <div className={style.blockText}>
-          <span>{category}</span>
-          <h2>{name}</h2>
+          <span>{category.name}</span>
+          <h2>{title}</h2>
           <p>{description}</p>
         </div>
         <div className={style.box}>
           <span>{'$' + price}</span>
-          <Button text="Add to Cart" />
+          <Button>Add to Cart</Button>
         </div>
       </div>
     </Link>
