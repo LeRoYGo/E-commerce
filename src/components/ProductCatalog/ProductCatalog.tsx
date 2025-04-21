@@ -36,7 +36,7 @@ const ProductCatalog = ({
   }
 
   return (
-    <article className={style.productCatalog}>
+    <article>
       <h3
         className={style.text}
         data-count={isShowCount ? listProduct?.length : ''}

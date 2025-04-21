@@ -1,5 +1,5 @@
-.productCatalog {
-}
+// .productCatalog {
+// }
 
 .text {
   display: inline-block;
@@ -24,11 +24,8 @@ ul.list {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  align-items: stretch;
   gap: 1.5rem;
   li {
-    border-radius: 5px;
-    overflow: hidden;
   }
 }
 
