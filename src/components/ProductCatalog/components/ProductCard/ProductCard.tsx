@@ -5,6 +5,7 @@ import { ProductCardProps } from '../../../../types/index.ts';
 
 const ProductCard = (props: ProductCardProps) => {
   const { id, images, title, description, category, price } = props;
+
   return (
     <Link to={`/products/${id}`} className={style.card}>
       <img src={images[0]} alt={title} />

@@ -1,16 +1,21 @@
 import style from './FilterSelect.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select, { MultiValue } from 'react-select';
 import { FilterTypes } from '../../../../types';
 import { useGetCategoriesQuery } from '../../../../store/api';
 
 const FilterSelect = () => {
-  const [, setSelectedOptions] = useState<MultiValue<FilterTypes>>([]);
+  const [selectedOptions, setSelectedOptions] =
+    useState<MultiValue<FilterTypes>>();
   const { data } = useGetCategoriesQuery('Categories');
 
   const handleChange = (selected: MultiValue<FilterTypes>) => {
     setSelectedOptions(selected);
   };
+
+  useEffect(() => {
+    console.log(selectedOptions);
+  }, [selectedOptions]);
 
   if (typeof data !== 'undefined') {
     const filterArr = (): FilterTypes[] => {

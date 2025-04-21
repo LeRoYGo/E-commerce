@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router';
 
 const pages = [
   { id: 0, title: 'Products', path: '/products' },
-  { id: 1, title: 'Categories', path: '/categories' },
   { id: 2, title: 'About us', path: '/about-us' },
 ];
 

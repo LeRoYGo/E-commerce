@@ -9,8 +9,11 @@ export const api = createApi({
   }),
   endpoints: (build) => ({
     getProducts: build.query<ProductCardProps[], string>({
-      query: () => `products/`,
+      query: () => `products`,
     }),
+    // getProductsByCategory: build.query<ProductCardProps[], string>({
+    //   query: (categorySlug) => `products/?categorySlug=${categorySlug}`,
+    // }),
     getProductId: build.query<ProductCardProps, string>({
       query: (productId) => `products/${productId}`,
     }),
@@ -24,4 +27,5 @@ export const {
   useGetProductsQuery,
   useGetProductIdQuery,
   useGetCategoriesQuery,
+  // useGetProductsByCategoryQuery,
 } = api;

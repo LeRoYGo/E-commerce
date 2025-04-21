@@ -49,7 +49,7 @@ const ProductItemPages = () => {
             </div>
           </div>
         </div>
-        <ListProducts title="Related Items" isShowCount={false} />
+        <ListProducts title="Related Items" isShowCount={false} maxEl={3} />
       </main>
     );
   }
