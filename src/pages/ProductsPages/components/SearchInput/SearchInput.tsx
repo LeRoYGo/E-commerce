@@ -5,12 +5,6 @@ import { useState } from 'react';
 const SearchInput = () => {
   const [searchTerms, setSearchTerms] = useState('');
 
-  // const handlerSearch = () => {
-  //   setSearchTerms;
-  // }
-
-  console.log(searchTerms);
-
   return (
     <div className={style.inputBox}>
       <input
