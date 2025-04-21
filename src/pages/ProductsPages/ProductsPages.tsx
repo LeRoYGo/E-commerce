@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router';
 const ProductsPages = () => {
   const [searchParams] = useSearchParams();
   const categorySlug = searchParams.get('category');
+
   return (
     <main className={style.main}>
       <h1 className={style.title}>Products</h1>
