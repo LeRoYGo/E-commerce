@@ -8,22 +8,26 @@ const ProductCatalog = ({
   title,
   isShowCount = true,
   maxEl,
+  categorySlug = null,
 }: ProductCatalogProps) => {
-  const { data: listProduct, isLoading } = useGetProductsQuery('Products');
+  const { data: listProduct, isLoading } = useGetProductsQuery(categorySlug);
 
   const listFormation = () => {
-    if (typeof listProduct === 'undefined') return;
+    if (!listProduct) return;
+
     if (typeof maxEl !== 'undefined') {
-      const maxElList = maxEl || listProduct.length;
+      const maxElList = Math.min(maxEl, listProduct.length);
       const arr = new Set<ProductCardProps>();
 
-      for (let i = 0; arr.size < maxElList; i++) {
+      while (arr.size < maxElList) {
         const randomItem =
           listProduct[Math.floor(Math.random() * listProduct.length)];
         arr.add(randomItem);
       }
+
       return [...arr];
     }
+
     return listProduct;
   };
 

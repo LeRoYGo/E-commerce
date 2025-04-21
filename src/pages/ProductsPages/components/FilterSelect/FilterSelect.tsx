@@ -8,7 +8,7 @@ const FilterSelect = () => {
   const [selectedOption, setSelectedOption] = useState<FilterTypes | null>(
     null,
   );
-  const { data, isLoading, error } = useGetCategoriesQuery('Categories');
+  const { data, isLoading, error } = useGetCategoriesQuery(null);
 
   const handleChange = (selected: FilterTypes | null) => {
     setSelectedOption(selected);

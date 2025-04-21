@@ -2,6 +2,7 @@ export type ProductCatalogProps = {
   title: string;
   isShowCount?: boolean;
   maxEl?: number;
+  categorySlug?: string | null;
 };
 
 export type ProductCardProps = {

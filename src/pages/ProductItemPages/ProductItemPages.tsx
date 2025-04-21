@@ -10,7 +10,7 @@ import Skeleton from './components/Skeleton';
 const ProductItemPages = () => {
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductIdQuery(
-    productId as string,
+    productId ? productId.toString() : '',
   );
 
   if (isLoading) {

@@ -3,21 +3,23 @@ import { Category, ProductCardProps } from '../types';
 
 export const api = createApi({
   reducerPath: 'api',
-  // tagTypes: ['Products', 'Product', 'Categories'],
+  tagTypes: ['Products', 'Product', 'Categories'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.escuelajs.co/api/v1/',
   }),
   endpoints: (build) => ({
-    getProducts: build.query<ProductCardProps[], string>({
-      query: () => `products`,
+    getProducts: build.query<ProductCardProps[], string | null>({
+      query: (categorySlug) => {
+        if (categorySlug) {
+          return `/products/?categorySlug=${categorySlug}`;
+        }
+        return '/products';
+      },
     }),
-    // getProductsByCategory: build.query<ProductCardProps[], string>({
-    //   query: (categorySlug) => `products/?categorySlug=${categorySlug}`,
-    // }),
     getProductId: build.query<ProductCardProps, string>({
       query: (productId) => `products/${productId}`,
     }),
-    getCategories: build.query<Category[], string>({
+    getCategories: build.query<Category[], null>({
       query: () => `categories`,
     }),
   }),
@@ -27,5 +29,4 @@ export const {
   useGetProductsQuery,
   useGetProductIdQuery,
   useGetCategoriesQuery,
-  // useGetProductsByCategoryQuery,
 } = api;
