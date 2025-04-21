@@ -1,18 +1,15 @@
 .card {
-  display: flex;
-  flex-direction: column;
+  display: block;
   background-color: rgba(255, 255, 255);
-  overflow: hidden;
-  border-radius: 5px;
   text-decoration: none;
   color: rgb(0, 0, 0);
   transition: box-shadow 0.2s ease-in-out;
+  height: 100%;
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
     max-height: 55%;
-  }
-  & > * {
+    object-fit: cover;
     margin-bottom: 3rem;
   }
   &:hover {
@@ -22,12 +19,9 @@
 
 .wrapper {
   padding: 0 0.8rem;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  div:not(:last-child) {
-    margin-bottom: 2rem;
-  }
+  row-gap: 2rem;
   .blockText {
     display: flex;
     flex-direction: column;

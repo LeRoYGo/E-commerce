@@ -36,13 +36,13 @@ const ProductCatalog = ({
   }
 
   return (
-    <>
-      <span
+    <article className={style.productCatalog}>
+      <h3
         className={style.text}
         data-count={isShowCount ? listProduct?.length : ''}
       >
         {title}
-      </span>
+      </h3>
       <ul className={style.list}>
         {listFormation()?.map((product) => (
           <li key={product.id} className={style.listItems}>
@@ -50,7 +50,7 @@ const ProductCatalog = ({
           </li>
         ))}
       </ul>
-    </>
+    </article>
   );
 };
 export default ProductCatalog;

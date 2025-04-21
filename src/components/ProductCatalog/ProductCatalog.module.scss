@@ -1,5 +1,5 @@
-$width: 1200px;
-$gap: 1.5rem;
+.productCatalog {
+}
 
 .text {
   display: inline-block;
@@ -8,7 +8,6 @@ $gap: 1.5rem;
   position: relative;
   line-height: 36px;
   margin-bottom: 2rem;
-  align-self: flex-start;
   &::after {
     content: attr(data-count);
     display: block;
@@ -17,19 +16,19 @@ $gap: 1.5rem;
     top: 0;
     transform: translateX(100%);
     color: rgba(81, 133, 129);
-
     font-size: 0.65em;
   }
 }
 
-.list {
+ul.list {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: $gap;
-  .listItems > * {
-    height: 100%;
-    width: 100%;
+  align-items: stretch;
+  gap: 1.5rem;
+  li {
+    border-radius: 5px;
+    overflow: hidden;
   }
 }
 

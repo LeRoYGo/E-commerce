@@ -6,7 +6,7 @@ const SearchInput = () => {
   const [searchTerms, setSearchTerms] = useState('');
 
   return (
-    <div className={style.inputBox}>
+    <article className={style.inputBox}>
       <input
         className={style.input}
         id="search"
@@ -18,7 +18,7 @@ const SearchInput = () => {
         }}
       />
       <Button style={{ whiteSpace: 'nowrap' }}>Find now</Button>
-    </div>
+    </article>
   );
 };
 export default SearchInput;
