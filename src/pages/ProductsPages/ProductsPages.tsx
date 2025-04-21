@@ -2,8 +2,11 @@ import style from './ProductsPages.module.scss';
 import ListProducts from '../../components/ProductCatalog';
 import FilterSelect from './components/FilterSelect';
 import SearchInput from './components/SearchInput';
+import { useSearchParams } from 'react-router';
 
 const ProductsPages = () => {
+  const [searchParams] = useSearchParams();
+  const categorySlug = searchParams.get('category');
   return (
     <main className={style.main}>
       <h1 className={style.title}>Products</h1>
@@ -15,7 +18,7 @@ const ProductsPages = () => {
         <SearchInput />
         <FilterSelect />
       </div>
-      <ListProducts title="Total products" />
+      <ListProducts title="Total products" categorySlug={categorySlug} />
     </main>
   );
 };
