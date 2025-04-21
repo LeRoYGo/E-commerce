@@ -13,43 +13,44 @@ const FilterSelect = () => {
   const navigate = useNavigate();
   const { data, isLoading, error } = useGetCategoriesQuery(null);
 
+  // Функция для навигации по выбранной категории
   const handleSelect = (slug: string | null) => {
     navigate(slug ? `/products?category=${slug}` : '/products');
   };
 
+  // Обработка изменения выбранного фильтра
   const handleChange = (selected: FilterTypes | null) => {
     setSelectedOption(selected);
   };
 
+  // Обновление выбранной категории при изменении selectedOption
   useEffect(() => {
-    if (selectedOption === null) {
-      handleSelect(null);
-      return;
-    }
-
-    if (selectedOption.value != null) {
+    if (selectedOption?.value) {
       handleSelect(selectedOption.value.toString());
+    } else {
+      handleSelect(null);
     }
   }, [selectedOption]);
 
+  // Обновление selectedOption при изменении данных категорий или параметров поиска
   useEffect(() => {
     if (!data) return;
 
     const categorySlug = searchParams.get('category');
-    if (!categorySlug) {
+    if (categorySlug) {
+      const matchedOption = data.find((cat) => cat.slug === categorySlug);
+      if (matchedOption) {
+        setSelectedOption({
+          label: matchedOption.name,
+          value: matchedOption.slug,
+        });
+      }
+    } else {
       setSelectedOption(null);
-      return;
-    }
-
-    const matchedOption = data.find((cat) => cat.slug === categorySlug);
-    if (matchedOption) {
-      setSelectedOption({
-        label: matchedOption.name,
-        value: matchedOption.slug,
-      });
     }
   }, [data, searchParams]);
 
+  // Обработки состояний загрузки и ошибок
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>There was an error when loading categories.</p>;
   if (!data) return null;
