@@ -1,43 +1,39 @@
+import { useState } from 'react';
+import Select from 'react-select';
 import style from './FilterSelect.module.scss';
-import { useEffect, useState } from 'react';
-import Select, { MultiValue } from 'react-select';
-import { FilterTypes } from '../../../../types';
 import { useGetCategoriesQuery } from '../../../../store/api';
+import { FilterTypes } from '../../../../types';
 
 const FilterSelect = () => {
-  const [selectedOptions, setSelectedOptions] =
-    useState<MultiValue<FilterTypes>>();
-  const { data } = useGetCategoriesQuery('Categories');
+  const [selectedOption, setSelectedOption] = useState<FilterTypes | null>(
+    null,
+  );
+  const { data, isLoading, error } = useGetCategoriesQuery('Categories');
 
-  const handleChange = (selected: MultiValue<FilterTypes>) => {
-    setSelectedOptions(selected);
+  const handleChange = (selected: FilterTypes | null) => {
+    setSelectedOption(selected);
+    console.log('Выбрано:', selected);
   };
 
-  useEffect(() => {
-    console.log(selectedOptions);
-  }, [selectedOptions]);
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>There was an error when loading categories.</p>;
+  if (!data) return null;
 
-  if (typeof data !== 'undefined') {
-    const filterArr = (): FilterTypes[] => {
-      return data.map((obj) => {
-        return {
-          label: obj.name,
-          value: obj.slug,
-        };
-      });
-    };
+  const filterOptions: FilterTypes[] = data.map((obj) => ({
+    label: obj.name,
+    value: obj.slug,
+  }));
 
-    return (
-      <Select
-        isMulti
-        name="categories"
-        options={filterArr()}
-        closeMenuOnSelect={false}
-        className={style.basicMultiSelect}
-        placeholder="Filter"
-        onChange={handleChange}
-      />
-    );
-  }
+  return (
+    <Select
+      options={filterOptions}
+      value={selectedOption}
+      onChange={handleChange}
+      className={style.basicSelect}
+      placeholder="Filter"
+      isClearable
+    />
+  );
 };
+
 export default FilterSelect;
