@@ -36,7 +36,7 @@ const ProductCatalog = ({
   }
 
   return (
-    <div className={style.wrapper}>
+    <>
       <span
         className={style.text}
         data-count={isShowCount ? listProduct?.length : ''}
@@ -50,7 +50,7 @@ const ProductCatalog = ({
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 export default ProductCatalog;
