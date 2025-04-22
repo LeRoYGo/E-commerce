@@ -6,17 +6,16 @@
   font-size: 2em;
   font-weight: bold;
   position: relative;
-  line-height: 36px;
   margin-bottom: 2rem;
   &::after {
     content: attr(data-count);
     display: block;
     position: absolute;
-    right: -0.8em;
-    top: 0;
+    right: -0.3em;
+    bottom: 0;
     transform: translateX(100%);
     color: rgba(81, 133, 129);
-    font-size: 0.65em;
+    font-size: 1em;
   }
 }
 
