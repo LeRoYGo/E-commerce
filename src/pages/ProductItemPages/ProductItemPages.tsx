@@ -27,14 +27,14 @@ const ProductItemPages = () => {
     return (
       <main className={style.main}>
         <BackButton />
-        <div className={style.wrapper}>
-          <div className={style.wrapperGallery}>
+        <section className={style.wrapper}>
+          <article className={style.wrapperGallery}>
             <Gallery pictures={product.images} />
-          </div>
-          <div className={style.content}>
-            <h1 className={style.nameProduct}>{product.title}</h1>
-            <p className={style.descriptionProduct}>{product.description}</p>
-            <span className={style.priceProduct}>${product.price}</span>
+          </article>
+          <div className={style.product}>
+            <h1 className={style.name}>{product.title}</h1>
+            <p className={style.description}>{product.description}</p>
+            <span className={style.price}>${product.price}</span>
             <div className={style.btnBox}>
               <Button>Buy Now</Button>
               <Button
@@ -48,7 +48,7 @@ const ProductItemPages = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </section>
         <ListProducts title="Related Items" isShowCount={false} maxEl={3} />
       </main>
     );

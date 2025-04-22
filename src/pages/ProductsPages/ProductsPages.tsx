@@ -18,7 +18,7 @@ const ProductsPages = () => {
       <div className={style.wrapper}>
         <SearchInput />
         <FilterSelect />
-        <ListProducts title="Total products" categorySlug={categorySlug} />
+        <ListProducts title="Total products:" categorySlug={categorySlug} />
       </div>
     </main>
   );

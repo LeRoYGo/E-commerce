@@ -25,12 +25,10 @@ ul.list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  li {
-  }
 }
 
 @media (max-width: 550px) {
-  .list {
+  ul.list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
