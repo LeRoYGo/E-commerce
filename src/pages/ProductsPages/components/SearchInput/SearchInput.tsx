@@ -20,6 +20,7 @@ const SearchInput = () => {
   return (
     <article className={style.inputBox}>
       <input
+        id="search"
         className={style.input}
         type="search"
         value={inputValue}

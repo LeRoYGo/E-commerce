@@ -5,26 +5,35 @@ import Redirection from '../components/Redirection';
 import FavoritesPages from '../pages/FavoritesPages';
 import NotFoundPages from '../pages/NotFoundPages';
 
+export const enum PATHS {
+  main = '/',
+  products = '/products',
+  products_productId = ':productId',
+  favorites = '/favorites',
+  aboutUs = '/about-us',
+  notFoundPages = '*',
+}
+
 export const router = [
   {
-    path: '/',
+    path: PATHS.main,
     Component: Redirection,
   },
   {
-    path: '/products',
+    path: PATHS.products,
     Component: App,
     children: [
       { index: true, Component: ProductsPages },
-      { path: ':productId', Component: ProductItemPages },
+      { path: PATHS.products_productId, Component: ProductItemPages },
     ],
   },
   {
     Component: App,
-    path: '/favorites',
+    path: PATHS.favorites,
     children: [{ index: true, Component: FavoritesPages }],
   },
   {
-    path: '*',
+    path: PATHS.notFoundPages,
     Component: NotFoundPages,
   },
 ];

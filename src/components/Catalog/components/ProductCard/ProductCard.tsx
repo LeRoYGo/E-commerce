@@ -1,5 +1,4 @@
 import style from './ProductCard.module.scss';
-import Button from '../../../Button';
 import { Link } from 'react-router';
 import { ProductCardProps } from '../../../../types/index.ts';
 
@@ -17,7 +16,6 @@ const ProductCard = (props: ProductCardProps) => {
         </div>
         <div className={style.box}>
           <span>{'$' + price}</span>
-          <Button>Add to Cart</Button>
         </div>
       </div>
     </Link>

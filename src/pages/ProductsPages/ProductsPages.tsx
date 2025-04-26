@@ -19,7 +19,7 @@ const ProductsPages = () => {
   });
 
   return (
-    <main className={style.main}>
+    <>
       <h1 className={style.title}>Products</h1>
       <p className={style.slogan}>
         We display products based on the latest products we have, if you want to
@@ -33,7 +33,7 @@ const ProductsPages = () => {
           filterList={filterList.join('&')}
         />
       </div>
-    </main>
+    </>
   );
 };
 

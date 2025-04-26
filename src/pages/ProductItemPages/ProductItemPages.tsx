@@ -9,6 +9,7 @@ import Skeleton from './components/Skeleton';
 import NotFoundPages from '../NotFoundPages';
 import { useAppDispatch } from '../../store/hooks';
 import { add } from '../../store/favoritesSlice';
+import { useScrollToTop } from '../../hook/useScrollToTop';
 
 const ProductItemPages = () => {
   const { productId } = useParams();
@@ -16,50 +17,52 @@ const ProductItemPages = () => {
     data: product,
     isLoading,
     error,
-  } = useGetProductIdQuery(productId ? productId.toString() : '');
+  } = useGetProductIdQuery(productId ? productId : '');
   const dispatch = useAppDispatch();
+  useScrollToTop();
 
   if (isLoading) {
     return (
-      <main className={style.main}>
+      <>
         <BackButton />
         <Skeleton />
         <ListProducts title="Related Items" isShowCount={false} />
-      </main>
+      </>
     );
   }
+
   if (error) return <NotFoundPages />;
-  if (typeof product !== 'undefined') {
-    return (
-      <main className={style.main}>
-        <BackButton />
-        <section className={style.wrapper}>
-          <article className={style.wrapperGallery}>
-            <Gallery pictures={product.images} />
-          </article>
-          <div className={style.product}>
-            <h1 className={style.name}>{product.title}</h1>
-            <p className={style.description}>{product.description}</p>
-            <span className={style.price}>${product.price}</span>
-            <div className={style.btnBox}>
-              <Button>Buy Now</Button>
-              <Button
-                onClick={() => dispatch(add(product))}
-                style={{
-                  color: 'rgba(0, 0, 0)',
-                  backgroundColor: 'rgb(255, 255, 255)',
-                  border: '1px solid rgba(0, 0, 0)',
-                }}
-              >
-                Add to Cart
-              </Button>
-            </div>
+  if (product === undefined) return;
+
+  return (
+    <>
+      <BackButton />
+      <section className={style.wrapper}>
+        <article className={style.wrapperGallery}>
+          <Gallery pictures={product.images} />
+        </article>
+        <div className={style.product}>
+          <h1 className={style.name}>{product.title}</h1>
+          <p className={style.description}>{product.description}</p>
+          <span className={style.price}>${product.price}</span>
+          <div className={style.btnBox}>
+            <Button>Buy Now</Button>
+            <Button
+              onClick={() => dispatch(add(product))}
+              style={{
+                color: 'rgba(0, 0, 0)',
+                backgroundColor: 'rgb(255, 255, 255)',
+                border: '1px solid rgba(0, 0, 0)',
+              }}
+            >
+              Add to favorites
+            </Button>
           </div>
-        </section>
-        <ListProducts title="Related Items" isShowCount={false} maxEl={3} />
-      </main>
-    );
-  }
+        </div>
+      </section>
+      <ListProducts title="Related Items" isShowCount={false} maxEl={3} />
+    </>
+  );
 };
 
 export default ProductItemPages;

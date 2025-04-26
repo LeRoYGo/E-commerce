@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router';
 import Header from './components/Header';
-import { useScrollToTop } from './hook/useScrollToTop.ts';
 
 const App = () => {
   return (
@@ -9,7 +8,6 @@ const App = () => {
       <main>
         <Outlet />
       </main>
-      {useScrollToTop()}
     </>
   );
 };

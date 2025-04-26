@@ -6,6 +6,10 @@ export const api = createApi({
   tagTypes: ['Products', 'Product', 'Categories'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.escuelajs.co/api/v1/',
+    // prepareHeaders: (headers) => {
+    //   headers.set('Content-Type', 'text/json');
+    //   headers.set('X-Content-Type-Options', 'nosniff');
+    // },
   }),
   endpoints: (build) => ({
     getProducts: build.query<ProductCardProps[], string | null>({
