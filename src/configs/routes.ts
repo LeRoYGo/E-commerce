@@ -2,6 +2,7 @@ import App from '../App';
 import ProductsPages from '../pages/ProductsPages';
 import ProductItemPages from '../pages/ProductItemPages';
 import Redirection from '../components/Redirection';
+import NotFoundPages from '../pages/NotFoundPages';
 
 export const router = [
   {
@@ -15,5 +16,9 @@ export const router = [
       { index: true, Component: ProductsPages },
       { path: ':productId', Component: ProductItemPages },
     ],
+  },
+  {
+    path: '*',
+    Component: NotFoundPages,
   },
 ];

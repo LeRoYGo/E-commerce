@@ -3,6 +3,7 @@ import style from './ProductCatalog.module.scss';
 import ProductCard from './components/ProductCard';
 import { ProductCardProps, ProductCatalogProps } from '../../types/index.ts';
 import Skeleton from './components/Skeleton/Skeleton.tsx';
+import NotFoundPages from '../../pages/NotFoundPages/NotFoundPages.tsx';
 
 const ProductCatalog = ({
   title,
@@ -10,7 +11,11 @@ const ProductCatalog = ({
   maxEl,
   filterList = null,
 }: ProductCatalogProps) => {
-  const { data: listProduct, isLoading } = useGetProductsQuery(filterList);
+  const {
+    data: listProduct,
+    isLoading,
+    error,
+  } = useGetProductsQuery(filterList);
 
   const listFormation = () => {
     if (!listProduct) return;
@@ -31,6 +36,7 @@ const ProductCatalog = ({
     return listProduct;
   };
 
+  if (error && listProduct?.length) return <NotFoundPages />;
   if (isLoading) return <Skeleton />;
 
   return (

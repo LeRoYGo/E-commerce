@@ -2,7 +2,7 @@ import style from './ProductItemPages.module.scss';
 import { useParams } from 'react-router';
 import ListProducts from '../../components/ProductCatalog';
 import Button from '../../components/Button';
-import BackButton from './components/BackButton';
+import BackButton from '../../components/BackButton';
 import Gallery from './components/Gallery';
 import { useGetProductIdQuery } from '../../store/api';
 import Skeleton from './components/Skeleton';
