@@ -1,5 +1,8 @@
 import { useGetProductsQuery } from '../../store/api';
-import { ProductCardProps, ProductCatalogProps } from '../../types/index.ts';
+import type {
+  ProductCardProps,
+  ProductCatalogProps,
+} from '../../types/index.ts';
 import Skeleton from './components/Skeleton/Skeleton.tsx';
 import NotFoundPages from '../../pages/NotFoundPages/NotFoundPages.tsx';
 import Catalog from '../Catalog';

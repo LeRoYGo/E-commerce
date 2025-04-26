@@ -1,12 +1,6 @@
 import style from './Catalog.module.scss';
-import { ProductCardProps } from '../../types';
+import type { CatalogProps } from '../../types';
 import ProductCard from './components/ProductCard';
-
-type CatalogProps = {
-  listProducts: ProductCardProps[] | undefined;
-  isShowCount: boolean;
-  title: string;
-};
 
 const Catalog = ({ listProducts, isShowCount, title }: CatalogProps) => {
   if (listProducts === undefined) return;

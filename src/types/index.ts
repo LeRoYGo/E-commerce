@@ -40,3 +40,11 @@ export type GalleryProps = {
 };
 
 export type FavoritesList = ProductCardProps[];
+
+export type CatalogProps = {
+  listProducts: ProductCardProps[] | undefined;
+  isShowCount: boolean;
+  title: string;
+};
+
+export type Params = Record<string, string | null>;

@@ -1,7 +1,6 @@
 import { useNavigate, useSearchParams } from 'react-router';
 import { useEffect, useState, useCallback } from 'react';
-
-type Params = Record<string, string | null>;
+import type { Params } from '../types';
 
 export const useQueryParams = () => {
   const navigate = useNavigate();
