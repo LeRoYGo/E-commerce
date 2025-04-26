@@ -1,9 +1,8 @@
 import { useGetProductsQuery } from '../../store/api';
-import style from './ProductCatalog.module.scss';
-import ProductCard from './components/ProductCard';
 import { ProductCardProps, ProductCatalogProps } from '../../types/index.ts';
 import Skeleton from './components/Skeleton/Skeleton.tsx';
 import NotFoundPages from '../../pages/NotFoundPages/NotFoundPages.tsx';
+import Catalog from '../Catalog';
 
 const ProductCatalog = ({
   title,
@@ -40,21 +39,11 @@ const ProductCatalog = ({
   if (isLoading) return <Skeleton />;
 
   return (
-    <article>
-      <h3
-        className={style.text}
-        data-count={isShowCount ? listProduct?.length : ''}
-      >
-        {title}
-      </h3>
-      <ul className={style.list}>
-        {listFormation()?.map((product) => (
-          <li key={product.id} className={style.listItems}>
-            <ProductCard {...product} />
-          </li>
-        ))}
-      </ul>
-    </article>
+    <Catalog
+      listProducts={listFormation()}
+      title={title}
+      isShowCount={isShowCount}
+    />
   );
 };
 export default ProductCatalog;

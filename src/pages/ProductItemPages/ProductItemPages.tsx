@@ -7,6 +7,8 @@ import Gallery from './components/Gallery';
 import { useGetProductIdQuery } from '../../store/api';
 import Skeleton from './components/Skeleton';
 import NotFoundPages from '../NotFoundPages';
+import { useAppDispatch } from '../../store/hooks';
+import { add } from '../../store/favoritesSlice';
 
 const ProductItemPages = () => {
   const { productId } = useParams();
@@ -15,6 +17,7 @@ const ProductItemPages = () => {
     isLoading,
     error,
   } = useGetProductIdQuery(productId ? productId.toString() : '');
+  const dispatch = useAppDispatch();
 
   if (isLoading) {
     return (
@@ -41,6 +44,7 @@ const ProductItemPages = () => {
             <div className={style.btnBox}>
               <Button>Buy Now</Button>
               <Button
+                onClick={() => dispatch(add(product))}
                 style={{
                   color: 'rgba(0, 0, 0)',
                   backgroundColor: 'rgb(255, 255, 255)',

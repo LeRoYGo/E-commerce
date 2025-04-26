@@ -48,6 +48,12 @@ body {
   object-fit: cover;
 }
 
+main {
+  padding: 5rem 12px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
 @media (max-width: 1024px) {
   html,
   body {

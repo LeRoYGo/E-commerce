@@ -1,5 +1,7 @@
 import style from './Header.module.scss';
 import { Link, NavLink } from 'react-router';
+import favorites from '../../assets/favorites.png';
+import { useAppSelector } from '../../store/hooks';
 
 const pages = [
   { id: 0, title: 'Products', path: '/products' },
@@ -7,6 +9,7 @@ const pages = [
 ];
 
 const Header = () => {
+  const numFavorites = useAppSelector((state) => state.favorites.length);
   return (
     <header className={style.header}>
       <Link to="/" className={style.logoWrapper}>
@@ -27,6 +30,15 @@ const Header = () => {
           ))}
         </ul>
       </nav>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? `${style.active} ${style.favorites}` : style.favorites
+        }
+        to="/favorites"
+        data-numFavorites={numFavorites}
+      >
+        <img src={favorites} />
+      </NavLink>
     </header>
   );
 };

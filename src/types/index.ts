@@ -38,3 +38,5 @@ export type CategoryMin = Pick<Category, 'name' | 'slug'>;
 export type GalleryProps = {
   pictures: string[];
 };
+
+export type FavoritesList = ProductCardProps[];
