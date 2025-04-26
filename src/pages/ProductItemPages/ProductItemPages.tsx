@@ -6,12 +6,15 @@ import BackButton from '../../components/BackButton';
 import Gallery from './components/Gallery';
 import { useGetProductIdQuery } from '../../store/api';
 import Skeleton from './components/Skeleton';
+import NotFoundPages from '../NotFoundPages';
 
 const ProductItemPages = () => {
   const { productId } = useParams();
-  const { data: product, isLoading } = useGetProductIdQuery(
-    productId ? productId.toString() : '',
-  );
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = useGetProductIdQuery(productId ? productId.toString() : '');
 
   if (isLoading) {
     return (
@@ -22,7 +25,7 @@ const ProductItemPages = () => {
       </main>
     );
   }
-
+  if (error) return <NotFoundPages />;
   if (typeof product !== 'undefined') {
     return (
       <main className={style.main}>
