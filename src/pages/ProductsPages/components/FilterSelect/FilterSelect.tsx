@@ -2,41 +2,22 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { useGetCategoriesQuery } from '../../../../store/api.ts';
 import style from './FilterSelect.module.scss';
-import { useNavigate, useSearchParams } from 'react-router';
+import { useQueryParams } from '../../../../hook/useQueryParams.ts';
 import { FilterTypes } from '../../../../types/index.ts';
 
 const FilterSelect = () => {
+  const { params, updateParams } = useQueryParams();
+  const { data, isLoading, error } = useGetCategoriesQuery(null);
   const [selectedOption, setSelectedOption] = useState<FilterTypes | null>(
     null,
   );
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const { data, isLoading, error } = useGetCategoriesQuery(null);
 
-  // Функция для навигации по выбранной категории
-  const handleSelect = (slug: string | null) => {
-    navigate(slug ? `/products?category=${slug}` : '/products');
-  };
-
-  // Обработка изменения выбранного фильтра
-  const handleChange = (selected: FilterTypes | null) => {
-    setSelectedOption(selected);
-  };
-
-  // Обновление выбранной категории при изменении selectedOption
-  useEffect(() => {
-    if (selectedOption?.value) {
-      handleSelect(selectedOption.value.toString());
-    } else {
-      handleSelect(null);
-    }
-  }, [selectedOption]);
-
-  // Обновление selectedOption при изменении данных категорий или параметров поиска
+  // Обновляем selectedOption если меняется параметр в URL
   useEffect(() => {
     if (!data) return;
 
-    const categorySlug = searchParams.get('category');
+    const categorySlug = params.category;
+
     if (categorySlug) {
       const matchedOption = data.find((cat) => cat.slug === categorySlug);
       if (matchedOption) {
@@ -48,9 +29,13 @@ const FilterSelect = () => {
     } else {
       setSelectedOption(null);
     }
-  }, [data, searchParams]);
+  }, [params.category, data]);
 
-  // Обработки состояний загрузки и ошибок
+  const handleChange = (selected: FilterTypes | null) => {
+    setSelectedOption(selected);
+    updateParams({ category: selected?.value.toString() || null });
+  };
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>There was an error when loading categories.</p>;
   if (!data) return null;

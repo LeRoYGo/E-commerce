@@ -8,9 +8,9 @@ const ProductCatalog = ({
   title,
   isShowCount = true,
   maxEl,
-  categorySlug = null,
+  filterList = null,
 }: ProductCatalogProps) => {
-  const { data: listProduct, isLoading } = useGetProductsQuery(categorySlug);
+  const { data: listProduct, isLoading } = useGetProductsQuery(filterList);
 
   const listFormation = () => {
     if (!listProduct) return;
@@ -31,9 +31,7 @@ const ProductCatalog = ({
     return listProduct;
   };
 
-  if (isLoading) {
-    return <Skeleton />;
-  }
+  if (isLoading) return <Skeleton />;
 
   return (
     <article>

@@ -1,24 +1,38 @@
+import { useEffect, useState } from 'react';
 import style from './SearchInput.module.scss';
-import Button from '../../../../components/Button';
-import { useState } from 'react';
+import { useQueryParams } from '../../../../hook/useQueryParams.ts';
+import Button from '../../../../components/Button/Button.tsx';
 
 const SearchInput = () => {
-  const [searchTerms, setSearchTerms] = useState('');
+  const { params, updateParams } = useQueryParams();
+  const [inputValue, setInputValue] = useState<string>('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+  };
+  const handleClick = () => updateParams({ title: inputValue });
+
+  useEffect(() => {
+    setInputValue(params.title || '');
+  }, [params.title]);
 
   return (
     <article className={style.inputBox}>
       <input
         className={style.input}
-        id="search"
         type="search"
-        placeholder="Search product"
-        value={searchTerms}
+        value={inputValue}
         onChange={(e) => {
-          setSearchTerms(e.target.value);
+          handleChange(e);
         }}
+        placeholder="Search product..."
       />
-      <Button style={{ whiteSpace: 'nowrap' }}>Find now</Button>
+      <Button onClick={handleClick} style={{ whiteSpace: 'nowrap' }}>
+        Find now
+      </Button>
     </article>
   );
 };
+
 export default SearchInput;

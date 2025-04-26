@@ -9,9 +9,9 @@ export const api = createApi({
   }),
   endpoints: (build) => ({
     getProducts: build.query<ProductCardProps[], string | null>({
-      query: (categorySlug) => {
-        if (categorySlug) {
-          return `/products/?categorySlug=${categorySlug}`;
+      query: (filter) => {
+        if (filter) {
+          return `/products/?${filter}`;
         }
         return '/products';
       },

@@ -2,7 +2,7 @@ export type ProductCatalogProps = {
   title: string;
   isShowCount?: boolean;
   maxEl?: number;
-  categorySlug?: string | null;
+  filterList?: string | null;
 };
 
 export type ProductCardProps = {
@@ -27,6 +27,11 @@ export type Category = {
 };
 
 export type FilterTypes = { label: string; value: string | number };
+
+export type Filter = {
+  title: string | null;
+  categorySlug: string | null;
+};
 
 export type CategoryMin = Pick<Category, 'name' | 'slug'>;
 
