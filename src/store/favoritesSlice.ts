@@ -8,12 +8,15 @@ const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<ProductCardProps>) => {
+    addItem: (state, action: PayloadAction<ProductCardProps>) => {
       state.push(action.payload);
+    },
+    deleteItem: (state, action: PayloadAction<ProductCardProps>) => {
+      return state.filter((obj) => obj.id !== action.payload.id);
     },
   },
 });
 
-export const { add } = favoritesSlice.actions;
+export const { addItem, deleteItem } = favoritesSlice.actions;
 
 export default favoritesSlice.reducer;

@@ -7,8 +7,8 @@ import Gallery from './components/Gallery';
 import { useGetProductIdQuery } from '../../store/api';
 import Skeleton from './components/Skeleton';
 import NotFoundPages from '../NotFoundPages';
-import { useAppDispatch } from '../../store/hooks';
-import { add } from '../../store/favoritesSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { addItem, deleteItem } from '../../store/favoritesSlice';
 import { useScrollToTop } from '../../hook/useScrollToTop';
 
 const ProductItemPages = () => {
@@ -18,6 +18,7 @@ const ProductItemPages = () => {
     isLoading,
     error,
   } = useGetProductIdQuery(productId ? productId : '');
+  const listFavorites = useAppSelector((state) => state.favorites);
   const dispatch = useAppDispatch();
   useScrollToTop();
 
@@ -47,16 +48,29 @@ const ProductItemPages = () => {
           <span className={style.price}>${product.price}</span>
           <div className={style.btnBox}>
             <Button>Buy Now</Button>
-            <Button
-              onClick={() => dispatch(add(product))}
-              style={{
-                color: 'rgba(0, 0, 0)',
-                backgroundColor: 'rgb(255, 255, 255)',
-                border: '1px solid rgba(0, 0, 0)',
-              }}
-            >
-              Add to favorites
-            </Button>
+            {listFavorites.includes(product) ? (
+              <Button
+                onClick={() => dispatch(deleteItem(product))}
+                style={{
+                  color: 'rgba(0, 0, 0)',
+                  backgroundColor: 'rgb(255, 255, 255)',
+                  border: '1px solid rgba(0, 0, 0)',
+                }}
+              >
+                Delete from favorites
+              </Button>
+            ) : (
+              <Button
+                onClick={() => dispatch(addItem(product))}
+                style={{
+                  color: 'rgba(0, 0, 0)',
+                  backgroundColor: 'rgb(255, 255, 255)',
+                  border: '1px solid rgba(0, 0, 0)',
+                }}
+              >
+                Add to favorites
+              </Button>
+            )}
           </div>
         </div>
       </section>
