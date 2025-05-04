@@ -8,32 +8,41 @@ import NotFoundPages from '../pages/NotFoundPages';
 export const enum PATHS {
   main = '/',
   products = '/products',
-  products_productId = ':productId',
+  productId = ':productId',
   favorites = '/favorites',
   aboutUs = '/about-us',
-  notFoundPages = '*',
+  notFound = '*',
 }
 
 export const router = [
   {
     path: PATHS.main,
-    Component: Redirection,
+    Component: App,
+    children: [
+      { index: true, Component: Redirection }, // редирект на /products
+    ],
   },
   {
     path: PATHS.products,
     Component: App,
     children: [
       { index: true, Component: ProductsPages },
-      { path: PATHS.products_productId, Component: ProductItemPages },
+      { path: PATHS.productId, Component: ProductItemPages },
     ],
   },
   {
-    Component: App,
     path: PATHS.favorites,
+    Component: App,
     children: [{ index: true, Component: FavoritesPages }],
   },
   {
-    path: PATHS.notFoundPages,
-    Component: NotFoundPages,
+    path: PATHS.aboutUs,
+    Component: App,
+    children: [{ index: true, Component: NotFoundPages }],
+  },
+  {
+    path: PATHS.notFound,
+    Component: App,
+    children: [{ index: true, Component: NotFoundPages }],
   },
 ];

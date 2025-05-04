@@ -4,17 +4,16 @@ import favorites from '../../assets/favorites.png';
 import { useAppSelector } from '../../store/hooks';
 import { PATHS } from '../../configs/routes.ts';
 
-const pages = [
-  { id: 0, title: 'Products', path: '/products' },
-  { id: 2, title: 'About us', path: '/about-us' },
-];
-
 const Header = () => {
   const numFavorites = useAppSelector((state) => state.favorites.length);
+  const pages = [
+    { id: 0, title: 'Products', path: PATHS.products },
+    { id: 2, title: 'About us', path: PATHS.aboutUs },
+  ];
 
   return (
     <header className={style.header}>
-      <Link to="/" className={style.logoWrapper}>
+      <Link to={PATHS.main} className={style.logoWrapper}>
         <img src="/logo.svg" alt="Lalasia logo" />
         <span>Lalasia</span>
       </Link>
