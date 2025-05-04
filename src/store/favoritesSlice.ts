@@ -2,7 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { FavoritesList, ProductCardProps } from '../types';
 
-const initialState: FavoritesList = [];
+const FAVORITES_KEY = 'favorites';
+
+const saveFavoritesToLocalStorage = (favorites: ProductCardProps[]) => {
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+};
+
+const loadFavoritesFromLocalStorage = (): ProductCardProps[] => {
+  const favorites = localStorage.getItem(FAVORITES_KEY);
+  return favorites ? JSON.parse(favorites) : [];
+};
+
+const initialState: FavoritesList = loadFavoritesFromLocalStorage();
 
 const favoritesSlice = createSlice({
   name: 'favorites',
@@ -10,9 +21,12 @@ const favoritesSlice = createSlice({
   reducers: {
     addItem: (state, action: PayloadAction<ProductCardProps>) => {
       state.push(action.payload);
+      saveFavoritesToLocalStorage(state);
     },
     deleteItem: (state, action: PayloadAction<ProductCardProps>) => {
-      return state.filter((obj) => obj.id !== action.payload.id);
+      const temp = state.filter((obj) => obj.id !== action.payload.id);
+      saveFavoritesToLocalStorage(temp);
+      return temp;
     },
   },
 });
